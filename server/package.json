@@ -1,0 +1,15 @@
+{
+	"name" : "subtiREST",
+	"description" : "Servicio REST para acceder a subtitulos.es",
+	"version" : "0.0.1",
+	"dependencies":{
+		"mongoose" : "3.8.12",
+		"express" : "4.0.0",
+		"method-override" : "^2.1.2",
+		"body-parser" : "^1.5.1",
+		"zerorpc" : "^0.9.3"
+	},
+	"scripts": {
+		"start": "node server.js"
+	}
+}
