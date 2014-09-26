@@ -1,2 +1,6 @@
-/databases/*
+/databases/journal
+/databases/local.0
+/databases/local.ns
+/databases/mongod.lock
+/databases/subtit_rest*
 /server/node_modules

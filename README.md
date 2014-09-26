@@ -6,7 +6,7 @@ Un wrapper RESTful para subtitulos.es
 ## Dependencias
 - Python (2.7 o superior)
 	- pymongo
-	- beautifoulsoup4
+	- beautifulsoup4
 	- zerorpc
 	- HTMLParser
 	- urllib2
@@ -22,6 +22,7 @@ Un wrapper RESTful para subtitulos.es
 
 ## Instalación
 Desde el directorio raíz del proyecto, ejecutar:
+
 ```
 sudo pip install pymongo beautifulsoup4 zerorpc
 cd server/
@@ -30,18 +31,25 @@ npm install
 
 ## Ejecución
 Desde el directorio raíz del proyecto, iniciar la BD.
+
 ```
 mongod --dbpath=./databases
 ```
+
 Si es la primera ejecución, hay que poblar la colección del índice de series.
+
 ```
 python scrapers/index_scraper.py
 ```
+
 Para poder obtener los títulos no guardados en la BD, hay que correr el servidor zeroRPC.
+
 ```
 python scrapers/title_scraper
 ```
+
 Y por último, iniciar el servidor Node.
+
 ```
 nodejs server/server.js &
 ```
@@ -115,7 +123,7 @@ GET http://localhost:3000/api/v1/info/name/Lost
 ```
 
 - error 0: interno
-- error 1o: show not found.
+- error 10: show not found.
 
 ### /title/id/:id/:season/:chapter
 Obtiene el nombre del capítulo de la serie con identificador :id, temporada :season y capítulo :chapter.
@@ -239,5 +247,9 @@ Sergio Luis Para no está, de ninguna manera, relacionado con subtitulos.es, y t
 
 ## Consideraciones
 El scraper del índice de subtitulos.es debe ser corrido regularmente para mantener la base de datos actualizada. Puedes añadir en sistemas GNU/Linux una entrada al cron con el correspondiente comando.  
+
+```
+0,30 * * * * python <subtiREST directory>/scrapers/index_scraper.py
+```
 
 El fichero scrapers.config está pensado para poder enganchar el scrapers de los títulos a cualquier BD MongoDB, y el servidor RPC a cualquier puerto, sin necesidad de tocar el código. Sin embargo, no es realmente usado en title_scraper.py, y en caso de querer que realmente funcione, habría que cambiar las correspondientes direcciones en /server/server.js y /server/helpers/utils.js
